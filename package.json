@@ -1,0 +1,19 @@
+{
+  "name": "js-2",
+  "version": "1.0.0",
+  "description": "Домашние задания по курсу JavaScript Уровень 2 Geekbrains",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/heydaywebsite/JS-2.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/heydaywebsite/JS-2/issues"
+  },
+  "homepage": "https://github.com/heydaywebsite/JS-2#readme"
+}
