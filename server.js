@@ -1,13 +1,21 @@
 const http = require('http')
 const fs = require('fs')
-const path = require('path')
 
 const server = http.createServer((req, res) => {
+  
+  const publicPath = './public'
 
-  let filePath = path.join(__dirname, 'public', req.url === '/' ? 'index.html' : req.url)
+  let body = null
 
-  const body = fs.readFileSync(filePath)
-  res.end(body)
+  try {
+    body = fs.readFileSync(`${publicPath}${req.url}`)
+    
+  } catch(e) {
+    console.log(e)
+    body = fs.readFileSync(`${publicPath}/index.html`)
+  }
+
+   res.end(body)
   })
 server.listen(process.env.PORT || 3002)
 console.log('Server started')
