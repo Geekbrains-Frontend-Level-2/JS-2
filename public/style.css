@@ -1,27 +1,81 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Lato", "Arial", sans-serif;
 }
 header,
 main,
 footer {
   width: 1200px;
   margin: 0 auto;
+  padding: 100px;
+}
+header {
+  text-align: center;
+}
+h1,
+h2,
+h3 {
+  font-weight: 700;
 }
 h1 {
   font-size: 48px;
-  text-align: center;
-}
-img {
-  display: block;
-  margin: 0 auto;
 }
 h2 {
-  font-size: 32px;
-  text-align: center;
+  font-size: 36px;
+}
+h4 {
+  font-weight: 400;
 }
 p {
+  font-weight: 300;
+}
+.btn {
+  display: block;
+  color: #ffffff;
+  background-color: #ffc223;
+  padding: 10px 20px;
+  margin: 20px auto;
+  border: 2px solid #ffc223;
+  outline: none;
+  border-radius: 2px;
+  font-weight: 700;
   font-size: 24px;
-  text-align: center;
+  cursor: pointer;
+}
+.btn:hover {
+  color: #ffc223;
+  background-color: #fff;
+}
+.btn:active {
+  color: #ffffff;
+  background-color: #ffc223;
+}
+
+.btn-wish {
+  background: url("img/wish.png");
+  width: 48px;
+  height: 48px;
+  border: none;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.btn-wish:hover {
+  background: url(img/wish-hover.png);
+  width: 48px;
+  height: 48px;
+  border: none;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.btn-wish:active {
+  background: url(img/wish.png);
+  width: 48px;
+  height: 48px;
+  border: none;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
 }
