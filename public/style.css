@@ -11,31 +11,30 @@ footer {
   padding: 100px;
 }
 header {
-  text-align: center;
-}
-h1,
-h2,
-h3 {
-  font-weight: 700;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 h1 {
-  font-size: 48px;
+  font-weight: 700;
+  font-size: 64px;
+  text-align: center;
 }
 h2 {
-  font-size: 36px;
-}
-h4 {
-  font-weight: 400;
+  font-weight: 700;
+  font-size: 48px;
+  text-align: center;
+  color: #96c83c;
 }
 p {
-  font-weight: 300;
+  font-weight: 400;
+  font-size: 24px;
 }
 .btn {
   display: block;
   color: #ffffff;
   background-color: #ffc223;
   padding: 10px 20px;
-  margin: 20px auto;
   border: 2px solid #ffc223;
   outline: none;
   border-radius: 2px;
@@ -78,4 +77,18 @@ p {
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
+}
+.cart {
+  font-weight: 700;
+  font-size: 36px;
+  align-self: flex-end;
+}
+
+.goods-list {
+  font-weight: 700;
+  font-size: 36px;
+}
+
+.good-info {
+  cursor: pointer;
 }
