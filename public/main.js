@@ -177,18 +177,21 @@ class Button {
   
   _render() {
 
-    const placeToBtn = document.querySelector('.good-card')
+    const placeToBtn = document.querySelectorAll('.good-card')
     console.log(placeToBtn);
     
-    if(placeToBtn) {
+    for (let i=0; i<placeToBtn.length; i++) {
+      if(placeToBtn) {
       const btn = this.getTamplate()
       btn.innerHTML = this.text
-      placeToBtn.appendChild(btn)
+      placeToBtn[i].appendChild(btn)
 
       btn.addEventListener('click', () => {
         this.onBtnClick()
       })
     }
+    }
+    
   }
 }
 
