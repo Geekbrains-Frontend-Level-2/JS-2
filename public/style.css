@@ -32,6 +32,7 @@ p {
 }
 .btn {
   display: block;
+  width: max-content;
   color: #ffffff;
   background-color: #ffc223;
   padding: 10px 20px;
@@ -91,4 +92,18 @@ p {
 
 .good-info {
   cursor: pointer;
+}
+
+.cart-list {
+  display: none;
+  position: absolute;
+  top: 32px;
+  right: 0;
+  background: #fff;
+  min-width: 100px;
+  color: #000;
+}
+
+.cart-list.shown {
+  display: block;
 }

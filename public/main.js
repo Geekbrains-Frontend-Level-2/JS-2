@@ -1,4 +1,4 @@
-class List {
+/*class List {
   items = []
 
   constructor () {
@@ -142,4 +142,4 @@ class CounterButton extends Button {
 }
 
 const addToCart = new Button('Add to cart')
-addToCart._render()
+addToCart._render()*/

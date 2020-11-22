@@ -1,0 +1,14 @@
+{
+  "data": [
+      { "name": "Aquanir", "price": 100 },
+      { "name": "Hypersid Extra", "price": 80 },
+      { "name": "Nirocryl 100 Extra", "price": 90 },
+      { "name": "Nirocryl 2000 Extra", "price": 140 },
+      { "name": "Nirocryl 2000 Extra White", "price": 140 },
+      { "name": "Nirocryl For The Bath", "price": 120 },
+      { "name": "Niroplast", "price": 150 },
+      { "name": "Polyurethane For Exterior", "price": 160 },
+      { "name": "Wondercryl", "price": 110 },
+      { "name": "Wonderspeed", "price": 110 }
+  ]
+}
