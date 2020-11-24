@@ -1,0 +1,8 @@
+{
+  "data": [
+      { "img": "img/aquanir.jpg", "name": "Aquanir", "price": 100 },
+      { "img": "img/hypersid-extra.jpg", "name": "Hypersid Extra", "price": 80 },
+      { "img": "img/nirocryl-100-extra.jpg", "name": "Nirocryl 100 Extra", "price": 90 },
+      { "img": "img/nirocryl-2000-extra.jpg", "name": "Nirocryl 2000 Extra", "price": 140 }
+  ]
+}

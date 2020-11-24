@@ -6,8 +6,20 @@ class AbstractList {
   }
 
   add(item) {
-    this.items.push(item)
-    console.log(this);
+    const findedItem = this.items.find((fitem) => {
+      return fitem.name === item.name
+    })
+
+    const addedPromise = new Promise(resolve => {
+      if(findedItem) {
+      findedItem.counter++
+    } else {
+      this.items.push(item)
+    }
+    resolve()
+    })
+    
+    addedPromise.then(this.render.bind(this))
   }
 
   remove() {
@@ -24,30 +36,60 @@ class AbstractList {
 
 class List extends AbstractList  {
   _cartInstance = null
+  _pageCounter = 1
   constructor (CartInstance) {
     super()
     this._cartInstance = CartInstance
+
+     this.initShowMoreBtn()
+
     let goodsPromise = this.fetchGoods()
     goodsPromise.then(() => {
       this.render()
     })
   }
 
+  initShowMoreBtn() {
+    const btn = document.querySelector('.show-more');
+    btn.addEventListener('click', () => {
+      this.fetchGoods()
+        .then(() => {
+          this.render()
+        })
+    })
+  }
+
+  hideShowMoreBtn() {
+    const btn = document.querySelector('.show-more')
+    btn.remove()
+  }
+
   fetchGoods() {
-    const result = fetch('http://localhost:3002/database.json');
+    const result = fetch(`http://localhost:3002/database/page${this._pageCounter}.json`);
     return result
     .then(res => {
       return res.json()
     })
     .then(data => {
-      console.log(data);
-      this.items = data.data.map(cur => {
+      this._pageCounter++
+      this.items.push(...data.data.map(cur => {
         return new GoodItem(cur, this._cartInstance)
+      }))
+    })
+    .catch(e => {
+      this.hideShowMoreBtn()
+      console.log(e)
+    })
+  }
+
+  render () {
+    const placeToRender = document.querySelector('.goods-list')
+    if (placeToRender) {
+      placeToRender.innerHTML = ''
+      this.items.forEach(good => {
+        good.render(placeToRender)
       })
-    })
-    .catch(err => {
-      console.warn('Check network', err)
-    })
+    }
   }
 }
 
@@ -78,14 +120,30 @@ class Cart extends AbstractList {
       placeToRender.appendChild(block)
     }
   }
+
+  render () {
+    const placeToRender = document.querySelector('.cart-list')
+    if (placeToRender) {
+      placeToRender.innerHTML = ''
+      if (this.items.length) {
+        this.items.forEach(good => {
+          good.render(placeToRender)
+        })
+      } else {
+        placeToRender.innerHTML = 'Нет товаров в корзине!'
+      }
+    }
+  }
 }
 
 class GoodItem {
   name = ''
   price = 0
+  counter = 1
   _cartInstance = null
 
-  constructor({ name, price }, CartInstance) {
+  constructor({ img, name, price }, CartInstance) {
+    this.img = img
     this.name = name
     this.price = price
     this._cartInstance = CartInstance
@@ -97,7 +155,7 @@ class GoodItem {
     if (PlaceToAdd) {
       const block = document.createElement('div')
       block.classList.add('good-cart')
-      block.innerHTML = `<p class="good-info">Product: ${this.name}<br>Price: ${this.price}</p>`
+      block.innerHTML = `<img class="good-img" src="${this.img}"><p class="good-info">Product: ${this.name}<br>Price: ${this.price}</p>`
       PlaceToAdd.appendChild(block)
     }
   }
@@ -108,87 +166,33 @@ class GoodItem {
     if (placeToRender) {
       const block = document.createElement('div')
       block.classList.add('good-card')
-      block.innerHTML = `<p class="good-info">Product: ${this.name}<br>Price: ${this.price}</p>
+      block.innerHTML = `<img class="good-img" src="${this.img}"><p class="good-info">Product: ${this.name}<br>Price: ${this.price}</p>
       <div class="btn-wrp"</div>`
       placeToRender.appendChild(block)
       
       const AddButton = new Button('Add to cart', () => {
-        this._cartInstance.add(this)
+        this._cartInstance.add(new GoodItemInCart(this))
       })
       block.querySelector('.btn-wrp').appendChild(AddButton.getTemplate())
     }
   }
 }
 
+class GoodItemInCart extends GoodItem {
+  constructor(props) {
+    super(props)
+  }
+
+  render() {
+    const placeToRender = document.querySelector('.cart-list')
+    if (placeToRender) {
+      const block = document.createElement('div')
+      block.classList.add('cart-good')
+      block.innerHTML = `${this.name} = ${this.price} * ${this.counter}`
+      placeToRender.appendChild(block)
+    }
+  }
+}
 
 const CartInstance = new Cart()
 const ListInstance = new List(CartInstance)
-
-// class Button {
-//   text = ''
-//   constructor(text) {
-//     this.text = text
-//   }
-
-//   onBtnClick() {
-//     console.log('Added!');
-//   }
-
-//   getTamplate() {
-//     const btn = document.createElement('button')
-//     btn.classList.add('btn')
-
-//     return btn
-//   }
-  
-//   _render() {
-
-//     const placeToBtn = document.querySelectorAll('.good-card')
-//     console.log(placeToBtn);
-    
-//       for (let i=0; i<placeToBtn.length; i++) {
-//         if(placeToBtn) {
-//         const btn = this.getTamplate()
-//         btn.innerHTML = this.text
-//         placeToBtn[i].appendChild(btn)
-
-//         btn.addEventListener('click', () => {
-//           this.onBtnClick()
-//         })
-//       }
-//     }
-//   }
-// }
-
-// class CounterButton extends Button {
-//   constructor(text) {
-//     super(text)
-//   }
-
-//   getTamplate() {
-//     const btn = document.createElement('button')
-//     btn.classList.add('btn')
-
-//     return btn
-//   }
-
-//   _render() {
-//     const placeToCounter = document.querySelectorAll('.good-cart')
-//     console.log(placeToCounter);
-    
-//       for (let i=0; i<placeToCounter.length; i++) {
-//         if(placeToCounter) {
-//         const btn = this.getTamplate()
-//         btn.innerHTML = this.text
-//         placeToCounter[i].appendChild(btn)
-
-//         btn.addEventListener('click', () => {
-//           this.onBtnClick()
-//         })
-//       }
-//     }
-//   }
-// }
-
-// const addToCart = new Button('Add to cart')
-// addToCart._render()

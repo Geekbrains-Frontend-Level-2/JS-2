@@ -54,4 +54,3 @@ buttonSend.addEventListener('click', () => {
 //     console.log('The message has been send');
 //   }
 // })
-

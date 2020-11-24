@@ -1,0 +1,8 @@
+{
+  "data": [
+      { "img": "img/nirocryl-2000-extra-white.jpg", "name": "Nirocryl 2000 Extra White", "price": 140 },
+      { "img": "img/nirocryl-for-the-bath.jpg", "name": "Nirocryl For The Bath", "price": 120 },
+      { "img": "img/niroplast.jpg", "name": "Niroplast", "price": 150 },
+      { "img": "img/polyurethane-for-exterior.jpg", "name": "Polyurethane For Exterior", "price": 160 }
+  ]
+}

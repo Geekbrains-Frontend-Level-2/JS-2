@@ -8,7 +8,7 @@ main,
 footer {
   width: 1200px;
   margin: 0 auto;
-  padding: 100px;
+  padding: 50px 0 0 0;
 }
 header {
   display: flex;
@@ -80,14 +80,20 @@ p {
   background-repeat: no-repeat;
 }
 .cart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   font-weight: 700;
   font-size: 36px;
-  align-self: flex-end;
+  margin: 40px 0;
 }
 
 .goods-list {
   font-weight: 700;
   font-size: 36px;
+  display: grid;
+  grid-template-columns: repeat(2, 50%);
+  gap: 60px;
 }
 
 .good-info {
@@ -95,15 +101,40 @@ p {
 }
 
 .cart-list {
+  width: 500px;
+  padding: 40px;
   display: none;
-  position: absolute;
-  top: 32px;
-  right: 0;
-  background: #fff;
-  min-width: 100px;
-  color: #000;
+  flex-direction: column;
+  align-items: center;
 }
 
 .cart-list.shown {
-  display: block;
+  display: flex;
+}
+
+.cart-good {
+  font-weight: 400;
+  font-size: 24px;
+  margin: 24px 0;
+}
+
+.cart > .btn {
+  background-color: #cddc39;
+  border: 2px solid #cddc39;
+}
+
+.cart > .btn:hover {
+  background-color: #fff;
+  color: #cddc39;
+}
+
+.show-more {
+  background-color: #cddc39;
+  border: 2px solid #cddc39;
+  margin: 100px auto;
+}
+
+.show-more:hover {
+  background-color: #fff;
+  color: #cddc39;
 }

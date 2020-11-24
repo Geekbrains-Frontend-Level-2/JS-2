@@ -1,0 +1,8 @@
+{
+  "data": [
+      { "img": "img/wondercryl.jpg", "name": "Wondercryl", "price": 110 },
+      { "img": "img/wonderspeed.jpg", "name": "Wonderspeed", "price": 110 },
+      { "img": "img/nirocryl-extra-matt.jpg", "name": "Nirocryl Extra Matt", "price": 130 },
+      { "img": "img/nirocryl-extra-white.jpg", "name": "Nirocryl Extra White", "price": 140 }
+  ]
+}
