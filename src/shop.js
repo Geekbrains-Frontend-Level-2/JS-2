@@ -1,3 +1,7 @@
+import Button from './button.js'
+
+import './style.css'
+
 class AbstractList {
   items = []
 
@@ -65,7 +69,7 @@ class List extends AbstractList  {
   }
 
   fetchGoods() {
-    const result = fetch(`http://localhost:3002/database/page${this._pageCounter}.json`);
+    const result = fetch(`/database/page${this._pageCounter}.json`);
     return result
     .then(res => {
       return res.json()
@@ -92,9 +96,6 @@ class List extends AbstractList  {
     }
   }
 }
-
-
-
 
 class Cart extends AbstractList {
   constructor () {
