@@ -13,20 +13,8 @@ export default class GoodItem {
     this.price = price
     this._cartInstance = CartInstance
   }
-  onBlockClick() {
-    console.log('Add!');
 
-    const PlaceToAdd = document.querySelector('.cart')
-    if (PlaceToAdd) {
-      const block = document.createElement('div')
-      block.classList.add('good-cart')
-      block.innerHTML = `<img class="good-img" src="${this.img}"><p class="good-info">Product: ${this.name}<br>Price: ${this.price}</p>`
-      PlaceToAdd.appendChild(block)
-    }
-  }
-  
-
-  render() {
+  render(placeToRender) {
     const placeToRender = document.querySelector('.goods-list')
     if (placeToRender) {
       const block = document.createElement('div')
@@ -42,3 +30,4 @@ export default class GoodItem {
     }
   }
 }
+

@@ -1,11 +1,10 @@
-import GoodItem from './good-item.js'
 
 export default class GoodItemInCart extends GoodItem {
   constructor(props) {
     super(props)
   }
 
-  render() {
+  render(placeToRender) {
     const placeToRender = document.querySelector('.cart-list')
     if (placeToRender) {
       const block = document.createElement('div')
