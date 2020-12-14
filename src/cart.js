@@ -1,4 +1,5 @@
 import AbstractList from './abstract-list.js'
+import Button from './button.js'
 
 export default class Cart extends AbstractList {
   constructor () {

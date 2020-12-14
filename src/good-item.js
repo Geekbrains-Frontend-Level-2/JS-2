@@ -1,21 +1,14 @@
+import AbstractGoodItem from './a-good-item.js'
 import Button from './button.js'
 import GoodItemInCart from './good-item-cart.js'
 
-export default class GoodItem {
-  name = ''
-  price = 0
-  counter = 1
-  _cartInstance = null
-
-  constructor({ img, name, price }, CartInstance) {
-    this.img = img
-    this.name = name
-    this.price = price
-    this._cartInstance = CartInstance
+export default class GoodItem extends AbstractGoodItem {
+  constructor(...props) {
+    super(...props)
   }
 
   render(placeToRender) {
-    const placeToRender = document.querySelector('.goods-list')
+    placeToRender = placeToRender || document.querySelector('.goods-list')
     if (placeToRender) {
       const block = document.createElement('div')
       block.classList.add('good-card')

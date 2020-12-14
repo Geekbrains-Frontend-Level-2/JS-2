@@ -1,11 +1,12 @@
+import AbstractGoodItem from './a-good-item.js'
 
-export default class GoodItemInCart extends GoodItem {
-  constructor(props) {
-    super(props)
+export default class GoodItemInCart extends AbstractGoodItem {
+  constructor(...props) {
+    super(...props)
   }
 
   render(placeToRender) {
-    const placeToRender = document.querySelector('.cart-list')
+    placeToRender = placeToRender || document.querySelector('.cart-list')
     if (placeToRender) {
       const block = document.createElement('div')
       block.classList.add('cart-good')
